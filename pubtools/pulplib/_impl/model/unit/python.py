@@ -9,6 +9,7 @@ from ... import compat_attr as attr
 class PythonPackageUnit(Unit):
     filename = pulp_attrib(type=str, pulp_field="filename")
     name = pulp_attrib(type=str, pulp_field="name")
+    version = pulp_attrib(type=str, pulp_field="version")
     sha512sum = pulp_attrib(type=str, pulp_field="_checksum")
 
     content_type_id = pulp_attrib(
