@@ -165,9 +165,8 @@ class Client(object):
         # run an initial auth request to validate url and credentials           
         # failed response status will raise exception                         
         url = os.path.join(self._url, "pulp/api/v2/actions/login/")             
-        res = self._do_request(method="POST", url=url, json={})                 
-        self._unpack_response(res)                                              
-
+        response = self._do_request(method="POST", url=url, json={})
+        response.raise_for_status()
 
     def get_repository(self, repository_id):
         """Get a repository by ID.
