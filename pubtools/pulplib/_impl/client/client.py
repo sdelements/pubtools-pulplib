@@ -162,6 +162,13 @@ class Client(object):
             .with_retry(retry_policy=self._RETRY_POLICY)
         )
 
+        # run an initial auth request to validate url and credentials           
+        # failed response status will raise exception                         
+        url = os.path.join(self._url, "pulp/api/v2/actions/login/")             
+        res = self._do_request(method="POST", url=url, json={})                 
+        self._unpack_response(res)                                              
+
+
     def get_repository(self, repository_id):
         """Get a repository by ID.
 
